@@ -1,0 +1,46 @@
+/*Given a string s, return true if the s can be palindrome
+after deleting at most one character from it.*/
+
+#include <string>
+using namespace std;
+
+class Solution
+{
+public:
+    bool validPalindrome(string s)
+    {
+        int low = 0;
+        int high = s.length() - 1;
+        int rmv = 0;
+
+        while (low <= high)
+        {
+            if (s[low] == s[high])
+            {
+                low++;
+                high--;
+            }
+            else
+            {
+                return isPalindrome(s, low + 1, high) || isPalindrome(s, low, high - 1);
+            }
+        }
+
+        return true;
+    }
+
+private:
+    bool isPalindrome(const string &s, int low, int high)
+    {
+        while (low < high)
+        {
+            if (s[low] != s[high])
+            {
+                return false;
+            }
+            low++;
+            high--;
+        }
+        return true;
+    }
+};
