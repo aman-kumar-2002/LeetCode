@@ -24,6 +24,6 @@ public:
                 }
             }
         }
-        return false; // No duplicates found within range k
+        return false; // No duplicates found within range k.
     }
 };
